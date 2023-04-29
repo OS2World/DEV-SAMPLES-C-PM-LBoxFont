@@ -18,7 +18,7 @@ BEGIN
                 BS_DEFAULT | WS_TABSTOP | WS_VISIBLE
         CONTROL "Copyright 1988, A&E Enterprises", -1, 6, 22, 159, 10, 
                 WC_STATIC, SS_TEXT | DT_CENTER | DT_TOP | WS_VISIBLE
-        CONTROL "PM Version 1.00 (Alpha)", -1, 7, 58, 160, 10, WC_STATIC, 
+        CONTROL "PM Version 1.01 (Alpha)", -1, 7, 58, 160, 10, WC_STATIC, 
                 SS_TEXT | DT_CENTER | DT_TOP | WS_VISIBLE
         CONTROL "Written by Eric Fogelin", -1, 7, 81, 161, 9, WC_STATIC, 
                 SS_TEXT | DT_CENTER | DT_TOP | WS_VISIBLE

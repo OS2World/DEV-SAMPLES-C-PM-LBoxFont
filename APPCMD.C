@@ -6,26 +6,26 @@
 #include <string.h>
 
 extern HWND hwndList;
-int index;
+int index2;
 char szEdit[256] = "This is a test";
 char temp[15];
 
-MRESULT FAR PASCAL APPCommand( hWnd, message, mp1, mp2 )
+MRESULT EXPENTRY APPCommand( hWnd, message, mp1, mp2 )
 HWND    hWnd;
-USHORT  message;
+ULONG  message;
 MPARAM  mp1;
 MPARAM  mp2;
 {
 
 
-		    index = strlen ("Window");
-		    strncpy (temp, "Window", index);
-		    temp [index] = '\0';
+		    index2 = strlen ("Window") + 1;
+		    strncpy (temp, "Window", index2);
+		    temp [index2] = '\0';
 		    WinSendMsg (hwndList, LM_INSERTITEM, MPFROM2SHORT (LIT_SORTASCENDING, 0),
 				MPFROMP (temp));
-		    index = strlen ("PM Land");
-		    strncpy (temp, "PM Land", index);
-		    temp [index] = '\0';
+		    index2 = strlen ("PM Land") + 1;
+		    strncpy (temp, "PM Land", index2);
+		    temp [index2] = '\0';
 
 		    WinSendMsg (hwndList, LM_INSERTITEM, MPFROM2SHORT (LIT_SORTASCENDING, 0),
 				MPFROMP (temp));
@@ -38,9 +38,9 @@ MPARAM  mp2;
 */
 
 
-MRESULT FAR PASCAL About( hWndDlg, message, mp1, mp2 )
+MRESULT EXPENTRY About( hWndDlg, message, mp1, mp2 )
 HWND    hWndDlg;
-USHORT  message;
+ULONG  message;
 MPARAM  mp1;
 MPARAM  mp2;
 {
@@ -66,22 +66,22 @@ MPARAM  mp2;
 /*
 */
 
-MRESULT FAR PASCAL EditDlg( hWndDlg, message, mp1, mp2 )
+MRESULT EXPENTRY EditDlg( hWndDlg, message, mp1, mp2 )
 HWND    hWndDlg;
-USHORT  message;
+ULONG  message;
 MPARAM  mp1;
 MPARAM  mp2;
 {
     switch( message )
     {
       case WM_INITDLG:
-	  WinSetDlgItemText( hWndDlg, IDEDIT, szEdit );
+	  WinSetDlgItemText( hWndDlg, IDEDIT, (PCSZ) szEdit );
           break;
 
       case WM_COMMAND:
           switch( LOUSHORT( mp1 ) ) {
               case DID_OK:
-		  WinQueryDlgItemText( hWndDlg, IDEDIT, 256, szEdit );
+		  WinQueryDlgItemText( hWndDlg, IDEDIT, 256, (PSZ) szEdit );
                   WinDismissDlg( hWndDlg, TRUE );
                   break;
 

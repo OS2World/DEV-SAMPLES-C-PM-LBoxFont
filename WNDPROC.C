@@ -18,9 +18,9 @@ FONTMETRICS FontMetrics;
 OWNERITEM FAR * oi;
 int i=0;
 
-MRESULT FAR PASCAL APPWndProc( hWnd, message, mp1, mp2 )
+MRESULT EXPENTRY APPWndProc( hWnd, message, mp1, mp2 )
 HWND    hWnd;
-USHORT  message;
+ULONG  message;
 MPARAM  mp1;
 MPARAM  mp2;
 {
@@ -39,7 +39,7 @@ MPARAM  mp2;
 	    while((i<=FontsAvail))
 	    {
 
-	       if((fm[i].fsDefn & 0x8000) && (fm[i].fsType & FATTR_TYPE_FIXED))
+	       if((fm[i].fsDefn & 0x8000) && (fm[i].fsType & FM_TYPE_FIXED))
 		  break;
 	       i++;
 	    }
@@ -54,7 +54,7 @@ MPARAM  mp2;
 	    vfat.usCodePage	 =  850;
 	    vfat.lMaxBaselineExt =  fm[i].lMaxBaselineExt;
 	    vfat.lAveCharWidth	 =  fm[i].lAveCharWidth;
-	    vfat.fsType 	 =  FATTR_TYPE_FIXED;
+	    vfat.fsType 	 =  FM_TYPE_FIXED;
 	    vfat.fsFontUse	 =  0;
 
      /* Get metrics  */
@@ -84,17 +84,17 @@ MPARAM  mp2;
                 break;
 
             case IDENTER:
-		if (WinDlgBox( HWND_DESKTOP, hWnd, (PFNWP)EditDlg, NULL, IDD_INPUT,
+		if (WinDlgBox( HWND_DESKTOP, hWnd, (PFNWP)EditDlg, 0, IDD_INPUT,
 		    NULL )) {
 			WinMessageBox( HWND_DESKTOP, hWnd,
-				       szEdit,
-				       "Edit Control", NULL,
+				       (PCSZ) szEdit,
+				       (PCSZ) "Edit Control", 0,
 				       MB_OK | MB_ICONEXCLAMATION );
                 }
                 break;
 
             case IDABOUT:
-		WinDlgBox( HWND_DESKTOP, hWnd, (PFNWP)About, NULL, IDD_ABOUT,
+		WinDlgBox( HWND_DESKTOP, hWnd, (PFNWP)About, 0, IDD_ABOUT,
 		    NULL );
                 break;
 
@@ -109,7 +109,7 @@ MPARAM  mp2;
         break;
 
     case WM_ERASEBACKGROUND:
-	return TRUE;
+	return (MRESULT) TRUE;
 	break;
 
     case WM_DRAWITEM:
@@ -130,8 +130,3 @@ MPARAM  mp2;
 
     return( 0L );
 }
-/*
-*/
-
-/*
-*/

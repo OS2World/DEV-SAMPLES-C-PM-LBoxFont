@@ -7,16 +7,16 @@
 
 extern char     szAppName[];
 
-VOID FAR PASCAL APPPaint( hWnd, message, mp1, mp2 )
+VOID EXPENTRY APPPaint( hWnd, message, mp1, mp2 )
 HWND   hWnd;
-USHORT message;
+ULONG message;
 MPARAM  mp1;
 MPARAM  mp2;
 {
     HPS         hPS;
     RECTL	rc, rcClip;
 
-    hPS = WinBeginPaint( hWnd, NULL, &rcClip );
+    hPS = WinBeginPaint( hWnd, 0, &rcClip );
 
     WinQueryWindowRect( hWnd, &rc );
     WinFillRect( hPS, &rc, CLR_WHITE );
