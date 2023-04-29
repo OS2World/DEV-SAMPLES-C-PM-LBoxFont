@@ -1,5 +1,5 @@
 # DEV-SAMPLES-PM-LBoxFont
-Change font in PM listbox, demo source
+Change font in PM listbox.
 
 LICENSE
 ===============
@@ -7,12 +7,14 @@ LICENSE
 
 COMPILE TOOLS
 ===============
-* Microsoft C Compiler (cl.exe)
+* yum install git gcc make libc-devel binutils watcom-wrc watcom-wlink-hll
  
 AUTHORS
 ===============
-* 
+* Martin Iturbide (2023)
+* Dave Yeo (2023)
+* Eric Fogelin
 
 LINKS
 ===============
-* 
+*
